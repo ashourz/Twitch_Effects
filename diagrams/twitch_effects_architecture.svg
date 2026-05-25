@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="760" viewBox="0 0 1320 760" role="img" aria-labelledby="title desc">
+  <title id="title">TwitchEffects architecture</title>
+  <desc id="desc">Architecture diagram showing Android mobile app, Wear OS app, shared library, Firebase, and OBS overlay website.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f6fbf5; }
+      .card { fill: #ffffff; stroke: #2e5b3b; stroke-width: 2; rx: 18; ry: 18; }
+      .title { font: 700 26px Arial, sans-serif; fill: #17301f; }
+      .subtitle { font: 600 18px Arial, sans-serif; fill: #24462f; }
+      .body { font: 15px Arial, sans-serif; fill: #355542; }
+      .small { font: 13px Arial, sans-serif; fill: #4a6a56; }
+      .arrow { stroke: #4d8b5f; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .label { font: 700 12px Arial, sans-serif; fill: #4d8b5f; text-anchor: middle; }
+      .labelbg { fill: transparent; }
+      .chip { fill: #e8f5e7; stroke: #8bb993; stroke-width: 1.5; rx: 10; ry: 10; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4d8b5f" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1320" height="760" />
+  <text class="title" x="60" y="60">TwitchEffects Streaming System</text>
+  <text class="body" x="60" y="92">Android and Wear clients publish live state to Firebase.</text>
+  <text class="body" x="60" y="116">A companion website then renders browser-source overlays inside OBS.</text>
+
+  <rect class="card" x="60" y="160" width="290" height="230" />
+  <text class="subtitle" x="86" y="190">Android Mobile App</text>
+  <text class="body" x="86" y="226">Compose screens:</text>
+  <text class="small" x="106" y="252">- StreamingElements</text>
+  <text class="small" x="106" y="276">- MapSettings</text>
+  <text class="small" x="106" y="300">- LocationSettings</text>
+  <text class="small" x="106" y="324">- SensorSettings</text>
+  <text class="small" x="106" y="348">- DoomFaceSettings</text>
+
+  <rect class="card" x="60" y="460" width="290" height="220" />
+  <text class="subtitle" x="86" y="500">Wear OS Companion</text>
+  <text class="body" x="86" y="536">Secondary control surface:</text>
+  <text class="small" x="106" y="562">- MainTileService</text>
+  <text class="small" x="106" y="586">- MainComplicationService</text>
+  <text class="small" x="106" y="610">- WidgetDashboard</text>
+  <text class="small" x="106" y="634">- Themed detail screens</text>
+
+  <rect class="card" x="470" y="160" width="390" height="520" />
+  <text class="subtitle" x="506" y="200">Shared Kotlin Runtime</text>
+  <text class="body" x="506" y="236">Service layer used across native clients:</text>
+  <text class="small" x="526" y="268">- ActivityViewModel orchestrates state and jobs</text>
+  <text class="small" x="526" y="296">- SensorService reads motion, heart rate, steps,</text>
+  <text class="small" x="544" y="316">temperature, and humidity</text>
+  <text class="small" x="526" y="348">- LocationService computes distance, bearing,</text>
+  <text class="small" x="544" y="368">and timestamps</text>
+  <text class="small" x="526" y="400">- DoomfaceService manages avatar selections</text>
+  <text class="small" x="526" y="428">- FirebaseService filters and serializes payloads</text>
+  <text class="body" x="506" y="472">Shared models:</text>
+  <rect class="chip" x="526" y="492" width="120" height="34" />
+  <text class="small" x="562" y="514">TEData</text>
+  <rect class="chip" x="666" y="492" width="120" height="34" />
+  <text class="small" x="694" y="514">TELocation</text>
+  <rect class="chip" x="526" y="540" width="120" height="34" />
+  <text class="small" x="559" y="562">TESensor</text>
+  <rect class="chip" x="666" y="540" width="120" height="34" />
+  <text class="small" x="698" y="562">DoomFace</text>
+  <text class="body" x="506" y="610">Payload cadence:</text>
+  <text class="small" x="526" y="636">- Writes only when streaming is enabled</text>
+  <text class="small" x="526" y="660">- Roughly one-second publish loop</text>
+
+  <rect class="card" x="960" y="160" width="290" height="184" />
+  <text class="subtitle" x="986" y="200">Firebase RTDB</text>
+  <text class="body" x="986" y="232">Shared namespace:</text>
+  <text class="small" x="1008" y="260">TWITCH_EFFECTS</text>
+  <text class="small" x="986" y="288">JSON payload contract between</text>
+  <text class="small" x="986" y="310">native clients and OBS overlays</text>
+
+  <rect class="card" x="940" y="430" width="320" height="250" />
+  <text class="subtitle" x="966" y="470">TwitchEffectsOverlay Website</text>
+  <text class="body" x="966" y="504">Browser-source modules:</text>
+  <text class="small" x="986" y="532">- compass/ with OpenLayers map</text>
+  <text class="small" x="1004" y="552">and heading controls</text>
+  <text class="small" x="986" y="580">- weather/ with reverse geocoding</text>
+  <text class="small" x="1004" y="600">and weather data</text>
+  <text class="small" x="986" y="628">- doom/ with layered avatar assets</text>
+  <text class="small" x="986" y="656">- error/ with standby states</text>
+
+  <path class="arrow" d="M350 270 C402 270, 432 270, 470 270" />
+  <path class="arrow" d="M350 570 C402 570, 432 570, 470 570" />
+  <path class="arrow" d="M860 270 C902 270, 928 270, 960 270" />
+  <path class="arrow" d="M1100 344 C1100 378, 1100 392, 1100 430" />
+
+  <rect class="labelbg" x="370" y="214" width="90" height="38" rx="8" ry="8" />
+  <text class="label" x="415" y="230">UI state</text>
+  <text class="label" x="415" y="244">commands</text>
+  <rect class="labelbg" x="364" y="514" width="92" height="38" rx="8" ry="8" />
+  <text class="label" x="410" y="530">Shared</text>
+  <text class="label" x="410" y="544">models</text>
+  <rect class="labelbg" x="853" y="214" width="114" height="38" rx="8" ry="8" />
+  <text class="label" x="910" y="230">Filtered JSON</text>
+  <text class="label" x="910" y="244">payload</text>
+  <rect class="labelbg" x="1120" y="368" width="84" height="38" rx="8" ry="8" />
+  <text class="label" x="1162" y="384">Realtime</text>
+  <text class="label" x="1162" y="398">subscription</text>
+</svg>

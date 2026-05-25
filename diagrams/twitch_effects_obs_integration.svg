@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1090" height="560" viewBox="0 0 1090 560" role="img" aria-labelledby="title desc">
+  <title id="title">TwitchEffects OBS integration</title>
+  <desc id="desc">Diagram showing the TwitchEffectsOverlay website assembled as an OBS browser source using modular overlay iframes.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f7fb; }
+      .title { font: 700 28px Arial, sans-serif; fill: #262640; }
+      .body { font: 16px Arial, sans-serif; fill: #4a4a68; }
+      .frame { fill: #ffffff; stroke: #4e5875; stroke-width: 2; rx: 20; ry: 20; }
+      .module { fill: #eef1ff; stroke: #7b86af; stroke-width: 2; rx: 14; ry: 14; }
+      .module2 { fill: #fff4ea; stroke: #c5924b; stroke-width: 2; rx: 14; ry: 14; }
+      .module3 { fill: #edf9f2; stroke: #5d9a73; stroke-width: 2; rx: 14; ry: 14; }
+      .module4 { fill: #fff0f2; stroke: #bf6877; stroke-width: 2; rx: 14; ry: 14; }
+      .subtitle { font: 700 20px Arial, sans-serif; fill: #31314a; }
+      .small { font: 13px Arial, sans-serif; fill: #5e5e79; }
+      .label { font: 700 12px Arial, sans-serif; fill: #6b7799; text-anchor: middle; }
+      .labelbg { fill: #f7f7fb; }
+      .arrow { stroke: #6b7799; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .center-title { font: 700 20px Arial, sans-serif; fill: #31314a; text-anchor: middle; }
+      .center-small { font: 13px Arial, sans-serif; fill: #5e5e79; text-anchor: middle; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7799" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1090" height="560" />
+  <text class="title" x="60" y="64">OBS Browser-Source Composition</text>
+  <text class="body" x="60" y="96">The companion website uses a container page plus independent modules.</text>
+  <text class="body" x="60" y="120">Each overlay can react to Firebase without sharing CSS or runtime state.</text>
+
+  <rect class="frame" x="80" y="150" width="590" height="374" />
+  <text class="subtitle" x="120" y="192">TwitchEffectsOverlay index.html</text>
+  <text class="small" x="120" y="220">Container layout loaded into OBS as a browser source</text>
+
+  <rect class="module2" x="105" y="240" width="240" height="104" />
+  <text class="center-title" x="225" y="282">weather/</text>
+  <text class="center-small" x="225" y="306">Reverse geocoding</text>
+  <text class="center-small" x="225" y="326">Current weather</text>
+
+  <rect class="module" x="400" y="240" width="240" height="104" />
+  <text class="center-title" x="520" y="282">error/</text>
+  <text class="center-small" x="520" y="306">Standby visuals</text>
+  <text class="center-small" x="520" y="326">Idle interruption state</text>
+
+  <rect class="module4" x="105" y="376" width="240" height="104" />
+  <text class="center-title" x="225" y="418">doom/</text>
+  <text class="center-small" x="225" y="442">Layered face, hair, glasses,</text>
+  <text class="center-small" x="225" y="462">and hat assets</text>
+
+  <rect class="module3" x="400" y="376" width="240" height="104" />
+  <text class="center-title" x="520" y="418">compass/</text>
+  <text class="center-small" x="520" y="442">OpenLayers map</text>
+  <text class="center-small" x="520" y="462">Bearing arrow, zoom, theme</text>
+
+  <rect class="frame" x="880" y="195" width="170" height="120" />
+  <text class="center-title" x="965" y="238">Firebase</text>
+  <text class="center-small" x="965" y="266">Shared TWITCH_EFFECTS</text>
+  <text class="center-small" x="965" y="288">JSON payload</text>
+
+  <rect class="frame" x="880" y="359" width="170" height="120" />
+  <text class="center-title" x="965" y="402">OBS</text>
+  <text class="center-small" x="965" y="430">Renders the container</text>
+  <text class="center-small" x="965" y="452">as one browser source</text>
+
+  <path class="arrow" d="M880 255 C832 255, 772 255, 670 255" />
+  <path class="arrow" d="M670 419 C772 419, 832 419, 880 419" />
+  <rect class="labelbg" x="738" y="225" width="76" height="20" rx="8" ry="8" />
+  <text class="label" x="776" y="239">subscribe</text>
+  <rect class="labelbg" x="726" y="387" width="100" height="20" rx="8" ry="8" />
+  <text class="label" x="776" y="401">rendered output</text>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="1200" viewBox="0 0 1180 1200" role="img" aria-labelledby="title desc">
+  <title id="title">TwitchEffects realtime data flow</title>
+  <desc id="desc">Data flow diagram showing how a user action propagates from Android through Firebase into OBS overlay modules.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfcf7; }
+      .step { fill: #ffffff; stroke: #446b4e; stroke-width: 2; rx: 18; ry: 18; }
+      .num { fill: #2f7a43; }
+      .num-text { font: 700 22px Arial, sans-serif; fill: #ffffff; }
+      .title { font: 700 28px Arial, sans-serif; fill: #1e3326; }
+      .subtitle { font: 600 18px Arial, sans-serif; fill: #284230; }
+      .body { font: 14px Arial, sans-serif; fill: #415d49; }
+      .arrow-shaft { stroke: #5a966a; stroke-width: 4; fill: none; }
+      .arrow-head { fill: #5a966a; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1180" height="1200" />
+  <text class="title" x="60" y="64">Representative Flow: Enable Compass Overlay During a Live Stream</text>
+  <text class="body" x="60" y="96">The same pattern also drives weather, Doomface, standby, and full-map overlays.</text>
+
+  <rect class="step" x="250" y="140" width="680" height="112" />
+  <circle class="num" cx="298" cy="196" r="22" />
+  <text class="num-text" x="291" y="204">1</text>
+  <text class="subtitle" x="338" y="184">User enables streaming</text>
+  <text class="body" x="338" y="210">Compose controls toggle the stream and compass map state.</text>
+
+  <path class="arrow-shaft" d="M590 252 L590 268" />
+  <polygon class="arrow-head" points="578,268 602,268 590,286" />
+
+  <rect class="step" x="250" y="286" width="680" height="112" />
+  <circle class="num" cx="298" cy="342" r="22" />
+  <text class="num-text" x="291" y="350">2</text>
+  <text class="subtitle" x="338" y="330">ActivityViewModel updates</text>
+  <text class="body" x="338" y="356">StateFlow values change and the background publishing job starts.</text>
+
+  <path class="arrow-shaft" d="M590 398 L590 414" />
+  <polygon class="arrow-head" points="578,414 602,414 590,432" />
+
+  <rect class="step" x="250" y="432" width="680" height="112" />
+  <circle class="num" cx="298" cy="488" r="22" />
+  <text class="num-text" x="291" y="496">3</text>
+  <text class="subtitle" x="338" y="476">Shared services collect data</text>
+  <text class="body" x="338" y="502">LocationService computes bearing while SensorService maintains live values.</text>
+
+  <path class="arrow-shaft" d="M590 544 L590 560" />
+  <polygon class="arrow-head" points="578,560 602,560 590,578" />
+
+  <rect class="step" x="250" y="578" width="680" height="112" />
+  <circle class="num" cx="298" cy="634" r="22" />
+  <text class="num-text" x="291" y="642">4</text>
+  <text class="subtitle" x="338" y="622">FirebaseService filters and publishes</text>
+  <text class="body" x="338" y="648">A TEData payload is serialized and written to TWITCH_EFFECTS.</text>
+
+  <path class="arrow-shaft" d="M590 690 L590 706" />
+  <polygon class="arrow-head" points="578,706 602,706 590,724" />
+
+  <rect class="step" x="250" y="724" width="680" height="112" />
+  <circle class="num" cx="298" cy="780" r="22" />
+  <text class="num-text" x="291" y="788">5</text>
+  <text class="subtitle" x="338" y="768">Overlay website listens</text>
+  <text class="body" x="338" y="794">Firebase JavaScript listeners parse the updated JSON payload.</text>
+
+  <path class="arrow-shaft" d="M590 836 L590 852" />
+  <polygon class="arrow-head" points="578,852 602,852 590,870" />
+
+  <rect class="step" x="250" y="870" width="680" height="112" />
+  <circle class="num" cx="298" cy="926" r="22" />
+  <text class="num-text" x="291" y="934">6</text>
+  <text class="subtitle" x="338" y="914">Compass overlay redraws</text>
+  <text class="body" x="338" y="940">Map center, zoom, dark mode, and arrow rotation update.</text>
+
+  <path class="arrow-shaft" d="M590 982 L590 998" />
+  <polygon class="arrow-head" points="578,998 602,998 590,1016" />
+
+  <rect class="step" x="250" y="1016" width="680" height="112" />
+  <circle class="num" cx="298" cy="1072" r="22" />
+  <text class="num-text" x="291" y="1080">7</text>
+  <text class="subtitle" x="338" y="1060">OBS browser source refreshes visually</text>
+  <text class="body" x="338" y="1086">The streamer sees live map overlay changes without touching the stream PC.</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="440" viewBox="0 0 1120 440" role="img" aria-labelledby="title desc">
+  <title id="title">TwitchEffects Wear-First Interaction Flow</title>
+  <desc id="desc">Flow diagram showing a wear-first interaction propagating through mobile services, Firebase sync, and overlay updates in OBS.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f4f7f3; }
+      .title { font: 700 30px Arial, sans-serif; fill: #213127; }
+      .subtitle { font: 16px Arial, sans-serif; fill: #405746; }
+      .step { fill: #ffffff; stroke: #4f6b57; stroke-width: 2; rx: 14; ry: 14; }
+      .step-alt { fill: #f0f8f1; stroke: #4f6b57; stroke-width: 2; rx: 14; ry: 14; }
+      .step-title { font: 700 18px Arial, sans-serif; fill: #213127; text-anchor: middle; }
+      .step-text { font: 14px Arial, sans-serif; fill: #3f5545; text-anchor: middle; }
+      .arrow { stroke: #54745e; stroke-width: 3.5; fill: none; marker-end: url(#arrow-head); }
+      .note { font: 12px Arial, sans-serif; fill: #5a7463; text-anchor: middle; }
+    </style>
+    <marker id="arrow-head" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#54745e" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1120" height="440" />
+  <text class="title" x="56" y="58">Wear-First Interaction Flow</text>
+  <text class="subtitle" x="56" y="84">A watch gesture updates stream visuals by passing through mobile orchestration and shared realtime state.</text>
+
+  <rect class="step" x="70" y="145" width="200" height="160" />
+  <text class="step-title" x="170" y="190">Wear OS Tap</text>
+  <text class="step-text" x="170" y="217">Quick effect toggle</text>
+  <text class="step-text" x="170" y="238">or map adjustment</text>
+  <text class="note" x="170" y="274">Step 1</text>
+
+  <rect class="step-alt" x="320" y="145" width="220" height="160" />
+  <text class="step-title" x="430" y="190">Mobile Runtime</text>
+  <text class="step-text" x="430" y="217">Shared Kotlin services</text>
+  <text class="step-text" x="430" y="238">normalize state</text>
+  <text class="note" x="430" y="274">Step 2</text>
+
+  <rect class="step" x="590" y="145" width="220" height="160" />
+  <text class="step-title" x="700" y="190">Firebase RTDB</text>
+  <text class="step-text" x="700" y="217">Filtered TEData payload</text>
+  <text class="step-text" x="700" y="238">published to TWITCH_EFFECTS</text>
+  <text class="note" x="700" y="274">Step 3</text>
+
+  <rect class="step-alt" x="860" y="145" width="200" height="160" />
+  <text class="step-title" x="960" y="190">Overlay + OBS</text>
+  <text class="step-text" x="960" y="217">Browser widget redraw</text>
+  <text class="step-text" x="960" y="238">inside live scene</text>
+  <text class="note" x="960" y="274">Step 4</text>
+
+  <path class="arrow" d="M270 225 C290 225, 300 225, 320 225" />
+  <path class="arrow" d="M540 225 C560 225, 570 225, 590 225" />
+  <path class="arrow" d="M810 225 C830 225, 840 225, 860 225" />
+
+  <path class="arrow" d="M960 305 L960 360 L170 360 L170 305" />
+  <text class="note" x="560" y="382">Visual feedback and control continuity return to the creator.</text>
+</svg>
